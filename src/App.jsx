@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import Meteo2 from "./components/Meteo2";
 import axios from "axios";
+import Meteo4 from "./components/Meteo4";
 
-function App() {
-  const [result, setResult] = useState([]);
+export default function App() {
+  const [item, setItem] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(async () => {
-    const myResult = await axios(
+    const result = await axios(
       "https://www.prevision-meteo.ch/services/json/lyon"
     );
-    setResult(myResult.data);
+    setItem(result.data);
     setIsLoading(false);
   }, []);
 
-  return <div className="App">{!isLoading && <Meteo2 result={result} />}</div>;
-}
+  function handleClick(e) {
+    e.preventDefault();
+    setItem("");
+  }
 
-export default App;
+  return (
+    <div>{!isLoading && <Meteo4 item={item} handleClick={handleClick} />}</div>
+  );
+}
