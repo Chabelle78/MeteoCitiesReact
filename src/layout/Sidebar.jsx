@@ -15,7 +15,7 @@ export default function Sidebar() {
           <Link to="/paris">Paris</Link>
         </li>
         <li>
-          <Link to="/dashboard">Dashboard</Link>
+          <Link to="/dashboard">Votre ville ?</Link>
         </li>
       </ul>
     </div>

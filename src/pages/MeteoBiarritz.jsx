@@ -18,11 +18,11 @@ export default function MeteoBiarritz() {
 
   return (
     <div>
-      <h1>Quel temps fait-il à Paris?</h1>
+      <h1>Quel temps fait-il à Biarritz?</h1>
       {!isLoading && (
         <>
           <p>
-            Nous avons actuellement sur Paris :
+            Nous avons actuellement sur Biarritz :
             {meteoBtz.current_condition.condition}
           </p>
         </>
@@ -30,7 +30,7 @@ export default function MeteoBiarritz() {
       {!isLoading && (
         <img
           src={meteoBtz.current_condition.icon_big}
-          alt="Meteo In Paris"
+          alt="Meteo In Biarritz"
         ></img>
       )}
     </div>
