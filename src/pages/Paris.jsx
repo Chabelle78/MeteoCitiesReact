@@ -5,12 +5,16 @@ export default function Paris() {
   const [meteoParis, setMeteoParis] = useState([]);
   const [isLoadingParis, setIsLoadingParis] = useState(true);
 
-  useEffect(async () => {
-    const resultParis = await axios(
-      "https://www.prevision-meteo.ch/services/json/paris"
-    );
-    setMeteoParis(resultParis.data);
-    setIsLoadingParis(false);
+  useEffect(() => {
+    axios
+      .get("https://www.prevision-meteo.ch/services/json/paris")
+      .then((res) => {
+        setMeteoParis(res.data);
+        setIsLoadingParis(false);
+      })
+      .catch((err) => {
+        console.log(error);
+      });
   });
 
   return (

@@ -6,12 +6,16 @@ export default function MeteoBiarritz() {
   const [meteoBtz, setMeteoBtz] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(async () => {
-    const result = await axios(
-      "https://www.prevision-meteo.ch/services/json/biarritz"
-    );
-    setMeteoBtz(result.data);
-    setIsLoading(false);
+  useEffect(() => {
+    axios
+      .get("https://www.prevision-meteo.ch/services/json/biarritz")
+      .then((res) => {
+        setMeteoBtz(res.data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   console.log(meteoBtz);
