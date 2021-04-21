@@ -2,15 +2,15 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { API_URL } from "../layout/Apiurl";
 
 function Dashboard() {
   const [meteoCity, setMeteoCity] = useState("");
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const { choosenCity } = useParams("");
-  const [search, setSearch] = useState("");
   const history = useHistory();
+
+  const [search, setSearch] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,31 +20,30 @@ function Dashboard() {
 
   useEffect(() => {
     setError(null);
+    setIsLoading(false);
     axios
-      .get(`${API_URL}${choosenCity}`)
+      .get(`https://www.prevision-meteo.ch/services/json/${search}`)
       .then((res) => {
-        setMeteoCity(res);
+        setMeteoCity(res.data);
+        console.log(res.data);
       })
       .catch((err) => {
-        setError(err);
+        setError(null);
       });
-  }, [choosenCity]);
+  }, [search]);
+
+  if (isLoading) return <h1>Loading....</h1>;
 
   return (
     <div>
-      <form onChange={handleSubmit}>
-        Quelle météo fait il à {choosenCity} ?
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
+          placeholder="What is your city?"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-        />
+        ></input>
       </form>
-      <p>Détails des prévisions météo de votre ville :{choosenCity}</p>
-      <a
-        href={`https://prevision-meteo.ch/meteo/localite/${choosenCity}`}
-        target="_blank"
-      ></a>
     </div>
   );
 }
