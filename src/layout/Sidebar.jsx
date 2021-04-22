@@ -9,13 +9,19 @@ export default function Sidebar() {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/biarritz">Biarritz</Link>
+          <Link to="/city/biarritz">Biarritz</Link>
         </li>
         <li>
-          <Link to="/paris">Paris</Link>
+          <Link to="/city/paris">Paris</Link>
         </li>
         <li>
-          <Link to="/research">Votre ville ?</Link>
+          <Link to="/city/pau">Pau</Link>
+        </li>
+        <li>
+          <Link to="/city/your-city"> Your city ?</Link>
+        </li>
+        <li>
+          <Link to="/chooseit">Aleatoire</Link>
         </li>
       </ul>
     </div>

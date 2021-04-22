@@ -20,7 +20,7 @@ export default function MeteoChoosen() {
   useEffect(() => {
     axios
       .get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=60915be832375658d25f7f20800fc811`
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=60915be832375658d25f7f20800fc811`
       )
       .then((res) => {
         setMeteo(res.data);
@@ -47,18 +47,17 @@ export default function MeteoChoosen() {
           onChange={(e) => setSearch(e.target.value)}
         ></input>
       </form>
-      <h1>Quel temps fait-il à {city}?</h1>
-      <p>Nous avons actuellement sur {city} :</p>
-      <p>{meteo.name}</p>
+      <h1>What's the weather in {city}?</h1>
+      <p>In {city}, it looks :</p>
       {!isLoading && (
         <>
           {meteo.weather.map((item) => {
-            return <p key={item.id}>{item.main}</p>;
+            return <p key={item.id}>{item.description}</p>;
           })}
+          <p>{meteo.main.temp} Celsius Degrees</p>
         </>
       )}
-      ;;
-      <img src={city.current_condition?.icon_big} alt="Meteo In"></img>
+      <img src="" alt="Meteo In"></img>
     </div>
   );
 }
