@@ -18,10 +18,13 @@ export default function Sidebar() {
           <Link to="/city/pau">Pau</Link>
         </li>
         <li>
+          <Link to="/lat/lat">Aleatoire</Link>
+        </li>
+        <li>
           <Link to="/city/your-city"> Your city ?</Link>
         </li>
         <li>
-          <Link to="/chooseit">Aleatoire</Link>
+          <Link to="/dadjokes"> Funny DadJokes</Link>
         </li>
       </ul>
     </div>

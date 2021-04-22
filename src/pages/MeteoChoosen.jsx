@@ -5,7 +5,7 @@ import { useParams, useHistory } from "react-router";
 
 export default function MeteoChoosen() {
   const [meteo, setMeteo] = useState({});
-  const { city } = useParams();
+  const { city } = useParams("lyon");
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -13,7 +13,7 @@ export default function MeteoChoosen() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    history.push(`/${search}`);
+    history.push(`/city/${search}`);
     setSearch("");
   };
 
@@ -33,6 +33,7 @@ export default function MeteoChoosen() {
         console.log(err);
       });
   }, [city]);
+
   if (isLoading) {
     return <h1>Loading...</h1>;
   }
@@ -55,9 +56,13 @@ export default function MeteoChoosen() {
             return <p key={item.id}>{item.description}</p>;
           })}
           <p>{meteo.main.temp} Celsius Degrees</p>
+          <p>Felt like {meteo.main.feels_like}</p>
+          <p>Level of humidity {meteo.main.humidity}%</p>
+          <p>
+            Wind is {meteo.wind.speed} and direction of the wind{meteo.wind.deg}
+          </p>
         </>
       )}
-      <img src="" alt="Meteo In"></img>
     </div>
   );
 }
