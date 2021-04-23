@@ -2,17 +2,16 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 export default function DadJokes() {
-  const [jokes, setJokes] = useState("");
+  const [jokes, setJokes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     axios
       .get(
-        `https://dad-jokes.p.rapidapi.com/random/joke/?rapidapi-key=67f146500amsh5181c60594a4bd3p1a8088jsn2f5864686f44`
+        `https://us-central1-dadsofunny.cloudfunctions.net/DadJokes/random/jokes/10`
       )
       .then((res) => {
         setJokes(res.data);
-        console.log(res.data);
       })
       .then((res) => {
         setIsLoading(false);
@@ -20,20 +19,19 @@ export default function DadJokes() {
       .catch(console.error);
   }, [jokes]);
 
-  //   if (!isLoading) return <h1>Loading...</h1>;
+  if (!isLoading) return <h1>Loading...</h1>;
 
   return (
     <div>
-      <h1>DadJokes {jokes.data}</h1>
+      {jokes.map((jokes) => {
+        return (
+          <div>
+            <h1>DadJokes {jokes.punchcline}</h1>
+            <h2 key={jokes.id}>{jokes.setup}</h2>
+            <p key={jokes.id}>{jokes.punchline}</p>
+          </div>
+        );
+      })}
     </div>
   );
 }
-
-// {isLoading && (
-//     <>
-//       <h1>Punchline</h1>
-//       {body.map((body, index) => {
-//         <p key={index}>{body.punchline}</p>;
-//       })}
-//     </>
-//   )}
