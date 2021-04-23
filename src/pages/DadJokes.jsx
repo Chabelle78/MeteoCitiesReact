@@ -8,7 +8,7 @@ export default function DadJokes() {
   useEffect(() => {
     axios
       .get(
-        `https://us-central1-dadsofunny.cloudfunctions.net/DadJokes/random/jokes/10`
+        `https://us-central1-dadsofunny.cloudfunctions.net/DadJokes/random/jokes`
       )
       .then((res) => {
         setJokes(res.data);
