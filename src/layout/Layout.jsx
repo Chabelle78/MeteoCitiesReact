@@ -5,7 +5,7 @@ import Footer from "./Footer";
 
 function Layout({ children }) {
   return (
-    <div className="container">
+    <div className="body-container max-w-[1000px] min-h-screen m-auto">
       <Sidebar />
 
       {children}

@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 export default function Sidebar() {
   return (
-    <div>
-      <ul>
+    <div className="text-white bg-gray-700 h-20">
+      <ul className="flex justify-around items-center pt-6">
         <li>
           <Link to="/">Home</Link>
         </li>
@@ -18,13 +18,10 @@ export default function Sidebar() {
           <Link to="/city/pau">Pau</Link>
         </li>
         <li>
-          <Link to="/lat/lat">Aleatoire</Link>
-        </li>
-        <li>
           <Link to="/city/your-city"> Your city ?</Link>
         </li>
         <li>
-          <Link to="/dadjokes"> Funny DadJokes</Link>
+          <Link to="/formulaires"> Forms </Link>
         </li>
       </ul>
     </div>

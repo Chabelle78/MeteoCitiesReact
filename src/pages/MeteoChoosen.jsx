@@ -52,7 +52,7 @@ export default function MeteoChoosen() {
         ></input>
       </form>
       <h1>What's the weather in {!(city === "your-city") && city} ?</h1>
-      <p>In {city}, it looks :</p>
+      <p>{!(city === "your-city") && city} It looks :</p>
       {!isLoading && !isError && (
         <>
           {meteo.weather.map((item) => {
