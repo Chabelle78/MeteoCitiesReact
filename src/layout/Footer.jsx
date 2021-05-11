@@ -3,7 +3,7 @@ import React from "react";
 export default function Footer() {
   return (
     <div>
-      <ul className="flex flex-row justify-around items-center py-10">
+      <ul className="flex flex-row justify-around items-center py-10 sticky">
         <li>
           <a href="https://www.instagram.com/chabelle78/" target="_blank">
             <img

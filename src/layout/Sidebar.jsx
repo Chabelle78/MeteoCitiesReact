@@ -9,15 +9,6 @@ export default function Sidebar() {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/city/biarritz">Biarritz</Link>
-        </li>
-        <li>
-          <Link to="/city/paris">Paris</Link>
-        </li>
-        <li>
-          <Link to="/city/pau">Pau</Link>
-        </li>
-        <li>
           <Link to="/city/your-city"> Your city ?</Link>
         </li>
         <li>

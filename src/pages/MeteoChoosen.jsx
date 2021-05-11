@@ -42,7 +42,7 @@ export default function MeteoChoosen() {
   }
 
   return (
-    <div>
+    <div className="flex flex-col items-center px-5 mx-12 h-screen">
       <form onSubmit={handleSubmit}>
         <input
           type="text"
