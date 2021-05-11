@@ -10,4 +10,5 @@ body {
 .body-container {
   height: 100%;
   background-image: url("./IMAGES/mathyas-kurmann-jnHQsTfq2Og-unsplash.jpg");
+  background-size: cover;
 }

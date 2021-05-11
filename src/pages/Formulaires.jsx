@@ -14,6 +14,7 @@ export default function Formulaires() {
 
   const onSubmit = (data) => {
     console.log(data);
+
     reset();
   };
 
