@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useHistory } from "react-router";
+import CitiesVisited from "./CitiesVisited.jsx/CitiesVisited";
+import Spinner from "./Spinner/Spinner";
 
-export default function MeteoChoosen() {
+export default function MeteoChoosen({ img }) {
   const [meteo, setMeteo] = useState({});
   const { city } = useParams();
   const history = useHistory();
@@ -37,20 +39,23 @@ export default function MeteoChoosen() {
   }, [city]);
 
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return <Spinner />;
   }
 
   return (
-    <div className="flex flex-col items-center px-5 mx-12 h-screen">
-      <form onSubmit={handleSubmit}>
+    <div className="flex flex-col  px-5 mx-12 h-screen">
+      <form onSubmit={handleSubmit} className="my-3  ">
         <input
           type="text"
           placeholder="What is your city?"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
+          className="border-2 rounded-2xl border-blue-300 px-6 py-2"
         ></input>
       </form>
-      <h1>What's the weather in {!(city === "your-city") && city} ?</h1>
+      <h1 className="text-lg py-2 ">
+        What's the weather in {!(city === "your-city") && city} ?
+      </h1>
       <p>{!(city === "your-city") && city} It looks :</p>
       {!isLoading && !isError && (
         <>
@@ -66,6 +71,7 @@ export default function MeteoChoosen() {
           </p>
         </>
       )}
+      <CitiesVisited search={search} setSearch={setSearch} city={city} />
     </div>
   );
 }

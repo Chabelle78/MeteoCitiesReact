@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import CitiesVisited from "./CitiesVisited.jsx/CitiesVisited";
+import Visited from "./CitiesVisited.jsx/Visited";
 
 export default function Home() {
   return (
@@ -15,7 +16,7 @@ export default function Home() {
       </p>
       <div>
         <h2>Travelled with me</h2>
-        <CitiesVisited />
+        <Visited />
       </div>
     </div>
   );
