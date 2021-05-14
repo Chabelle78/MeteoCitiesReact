@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { API_URL } from "../layout/Apiurl";
 import axios from "axios";
 import { useParams, useHistory } from "react-router";
 

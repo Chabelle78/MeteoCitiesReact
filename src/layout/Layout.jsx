@@ -1,12 +1,11 @@
 import React from "react";
-
-import Sidebar from "./Sidebar";
 import Footer from "./Footer";
+import Header from "./Header";
 
 function Layout({ children }) {
   return (
-    <div className="body-container max-w-[1000px] min-h-screen m-auto">
-      <Sidebar />
+    <div className="body-container min-h-screen m-auto">
+      <Header />
 
       {children}
 

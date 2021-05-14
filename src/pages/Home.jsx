@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import CitiesVisited from "./CitiesVisited.jsx/CitiesVisited";
 
 export default function Home() {
   return (
@@ -14,26 +15,7 @@ export default function Home() {
       </p>
       <div>
         <h2>Travelled with me</h2>
-        <div className="grid grid-cols-6">
-          <Link to={`/city/sydney`}>
-            <p>Sydney</p>
-          </Link>
-          <Link to={`/city/london`}>
-            <p>London</p>
-          </Link>
-          <Link to={`/city/stockholm`}>
-            <p>Stockholm</p>
-          </Link>
-          <Link to={`/city/zaragoza`}>
-            <p>Zaragoza</p>
-          </Link>
-          <Link to={`/city/montreal`}>
-            <p>Montreal</p>
-          </Link>
-          <Link to={`/city/sanvicentedelabarquera`}>
-            <p>San Vicente de La Barquera</p>
-          </Link>
-        </div>
+        <CitiesVisited />
       </div>
     </div>
   );

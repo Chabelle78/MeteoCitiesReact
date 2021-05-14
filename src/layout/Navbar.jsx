@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Sidebar() {
+export default function Navbar() {
   return (
-    <div className="text-white bg-gray-700 h-20">
+    <div className=" text-white bg-gray-700 h-20">
       <ul className="flex justify-around items-center pt-6">
         <li>
           <Link to="/">Home</Link>
