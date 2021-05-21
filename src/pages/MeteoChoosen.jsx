@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams, useHistory } from "react-router";
 import CitiesVisited from "./CitiesVisited.jsx/CitiesVisited";
 import Spinner from "./Spinner/Spinner";
+import JobLists from "./Employment/JobLists";
 
 export default function MeteoChoosen({ img }) {
   const [meteo, setMeteo] = useState({});
@@ -16,6 +17,31 @@ export default function MeteoChoosen({ img }) {
     e.preventDefault();
     history.push(`/city/${search}`);
     setSearch("");
+  };
+
+  const icon = (iconMeteo) => {
+    switch (iconMeteo) {
+      case "Thunderstorm":
+        return "https://img.icons8.com/doodle/48/000000/cloud-lighting.png";
+      case "Drizzle":
+        return "https://img.icons8.com/doodle/48/000000/rain--v1.png";
+      case "Rain":
+        return "https://img.icons8.com/doodle/48/000000/rain--v1.png";
+      case "Snow":
+        return "https://img.icons8.com/doodle/48/000000/snow--v1.png";
+      case "Clear":
+        return "https://img.icons8.com/doodle/48/000000/sun--v1.png";
+      case "Clouds":
+        return "https://img.icons8.com/doodle/48/000000/partly-cloudy-day.png";
+      default:
+        return "https://img.icons8.com/plasticine/100/000000/foggy-night-1.png";
+    }
+  };
+
+  const tempIcon = (tempIcon) => {
+    if (tempIcon >= 30) return "🥵";
+    else if (tempIcon <= 10) return "🥶";
+    else return "😊";
   };
 
   useEffect(() => {
@@ -50,19 +76,29 @@ export default function MeteoChoosen({ img }) {
           placeholder="What is your city?"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="border-2 rounded-2xl border-blue-300 px-6 py-2"
+          className="border-2 rounded-2xl border-blue-300 px-6 py-2 focus:outline-none capitalize"
         ></input>
       </form>
-      <h1 className="text-lg py-2 ">
+      <h1 className="text-lg py-2 capitalize">
         What's the weather in {!(city === "your-city") && city} ?
       </h1>
-      <p>{!(city === "your-city") && city} It looks :</p>
+      <p className="capitalize">{!(city === "your-city") && city} It looks :</p>
       {!isLoading && !isError && (
         <>
           {meteo.weather.map((item) => {
-            return <p key={item.id}>{item.description}</p>;
+            return (
+              <div key={item.id}>
+                <p className="capitalize" key={item.id}>
+                  {item.description}
+                </p>
+                <img src={`${icon(item.main)}`} alt="" width="45rem" />
+              </div>
+            );
           })}
-          <p>{meteo.main.temp} Celsius Degrees</p>
+
+          <p>
+            {meteo.main.temp} Celsius Degrees {tempIcon(meteo.main.temp)}
+          </p>
           <p>Felt like {meteo.main.feels_like}</p>
           <p>Level of humidity {meteo.main.humidity}%</p>
           <p>
